@@ -1,6 +1,6 @@
 // Declaring global variables
-let x = 0, number = 0;
 const date = new Date();
+let x = 0, number = 0;
 
 // Check which month it is
 const whichMonth = () => {
@@ -24,6 +24,7 @@ const whichMonth = () => {
 // Main function
 function getDateFromString(str) {
 	// Splitting input
+	setZero();
 	let split = str.split(' '), firsttext = split[1].toLowerCase(), result;
 	// check if input's first letter contain 'a' or 'an'
 	if (split[0] === 'a' || split[0] === 'an') {
@@ -46,6 +47,7 @@ function getDateFromString(str) {
 	} else if (firsttext === "day" || firsttext === "days") {
 		x = number*1
 		result = getDate(x)
+		
 	} else {
 		result = getTime(number, firsttext);
 	}
@@ -70,18 +72,24 @@ function getTime(int, str) {
 	}
 	let timeAndDateOnly = `${datetime.getDate()}-${datetime.getMonth()+1}-${datetime.getFullYear()} ${datetime.getHours()}:${datetime.getMinutes()}:${datetime.getSeconds()}`;
 	return timeAndDateOnly
+	setZero();
 }
 
 // Get time if input doesn't contain any second, minute, hour
 function getDate(int) {
 	let mainDate = date.setDate(date.getDate() - int);
-	var dateMsg = date.getDate()+'/'+ (date.getMonth()+1) +'/'+date.getFullYear() + ` ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+	var dateMsg = date.getDate()+'-'+ (date.getMonth()+1) +'-'+date.getFullYear() + ` ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 	return dateMsg
+	setZero();
+}
+
+function setZero() {
+	number = 0;
 }
 
 // exporting module
 // module.exports = getDateFromString;
 
-console.log(getDateFromString('1 day ago'))
 console.log(getDateFromString('1 hour ago'))
+console.log(getDateFromString('1 day ago'))
 console.log(getDateFromString('1 second ago'))
