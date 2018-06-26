@@ -5,7 +5,7 @@ const date = new Date();
 // Main function
 function getDateFromString(str) {
 	// Splitting input
-	let split = str.split(' '), firsttext = split[1];
+	let split = str.split(' '), firsttext = split[1], result;
 	// check if input's first letter contain 'a' or 'an'
 	if (split[0] === 'a' || split[0] === 'an') {
 		number = 1;
@@ -16,16 +16,17 @@ function getDateFromString(str) {
 	// Get actual number from first text input
 	if (firsttext === "week" || firsttext === "weeks") {
 		x = number*7;
-		getDate(x)
+		result = getDate(x)
 	} else if (firsttext === "month" || firsttext === "months"){
 		x = number*30;
-		getDate(x)
+		result = getDate(x)
 	} else if (firsttext === "day" || firsttext === "days") {
 		x = number*1
-		getDate(x)
+		result = getDate(x)
 	} else {
-		getTime(number, firsttext);
+		result = getTime(number, firsttext);
 	}
+	return result
 }
 
 // Get time if input doesn't contain any day, week, month
@@ -53,7 +54,6 @@ function getDate(int) {
 	var dateMsg = date.getDate()+'/'+ (date.getMonth()+1) +'/'+date.getFullYear() + ` ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 	return dateMsg
 }
-
 
 // exporting module
 module.exports = getDateFromString;
