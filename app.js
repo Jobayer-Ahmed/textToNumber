@@ -56,7 +56,5 @@ function getDate(int) {
 	return dateMsg
 }
 
-console.log(getDateFromString("a hour ago"))
-
-// exporting module
-// module.exports = getDateFromString;
+exporting module
+module.exports = getDateFromString;
