@@ -64,7 +64,7 @@ function getTime(int, str) {
 	} else if (str === "hour" || str === "hours") {
 		x = (int*60)*60*1000
 		datetime = new Date(date - x)
-		console.log(x, datetime)
+		// console.log(x, datetime)
 	} else {
 		return undefined
 	}
@@ -80,4 +80,8 @@ function getDate(int) {
 }
 
 // exporting module
-module.exports = getDateFromString;
+// module.exports = getDateFromString;
+
+console.log(getDateFromString('1 day ago'))
+console.log(getDateFromString('1 hour ago'))
+console.log(getDateFromString('1 second ago'))
