@@ -28,7 +28,7 @@ const aoran = (int) => {
 }
 
 // Main function
-function getInput(str) {
+const getInput = (str) => {
 	let split = str.split(' '), quantity = aoran(split[0]), mainSTR = split[1].split(''), extra = split[3],totalQuantityMonth = 0,totalQuantityMinute = 0,result, length = mainSTR.length - 1;
 	if (mainSTR[length] === 's') { mainSTR.pop(); mainSTR = mainSTR.join('');} else { mainSTR = mainSTR.join(''); }
 
@@ -63,7 +63,7 @@ function getInput(str) {
 }
 
 // Convert text to readable date format
-function convertTextToDate(month, minute, extra) {
+const convertTextToDate = (month, minute, extra) => {
 	let dateandtime = '', getYear, getMonth, getDay, getSecond, getMinute, getHour;
 	// Check if input needs to convert date
 	if (month !== 0 && minute === 0) {
