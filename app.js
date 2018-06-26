@@ -1,5 +1,5 @@
 // Declaring global variables
-let x = 0, number;
+let x = 0, number = 0;
 const date = new Date();
 
 // Check which month it is
