@@ -2,10 +2,28 @@
 let x = 0, number;
 const date = new Date();
 
+const whichMonth = () => {
+	const year = date.getFullYear();
+	const month = date.getMonth();
+	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+		return 31;
+	} else if (month == 4 || month == 6 || month == 9 || month == 11) {
+		return 30;
+	}
+	else {
+		let x = (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0)
+		if (x) {
+			return 29;
+		} else {
+			return 28;
+		}
+	}
+}
+
 // Main function
 function getDateFromString(str) {
 	// Splitting input
-	let split = str.split(' '), firsttext = split[1], result;
+	let split = str.split(' '), firsttext = split[1].toLowerCase(), result;
 	// check if input's first letter contain 'a' or 'an'
 	if (split[0] === 'a' || split[0] === 'an') {
 		number = 1;
@@ -14,11 +32,15 @@ function getDateFromString(str) {
 	}
 
 	// Get actual number from first text input
-	if (firsttext === "week" || firsttext === "weeks") {
-		x = number*7;
+	if (firsttext === "year" || firsttext === "years") {
+		x = number * 365;
+		result = getDate(x);
+	} else if (firsttext === "month" || firsttext === "months") {
+		let monthNumber = whichMonth();
+		x = number * monthNumber;
 		result = getDate(x)
-	} else if (firsttext === "month" || firsttext === "months"){
-		x = number*30;
+	} else if (firsttext === "week" || firsttext === "weeks"){
+		x = number*7;
 		result = getDate(x)
 	} else if (firsttext === "day" || firsttext === "days") {
 		x = number*1
