@@ -41,10 +41,11 @@ function getTime(int, str) {
 	} else if (str === "hour" || str === "hours") {
 		x = (int*60)*60*1000
 		datetime = new Date(date - x)
+		console.log(x, datetime)
 	} else {
 		return undefined
 	}
-	let timeAndDateOnly = `${datetime.getDate()}-${datetime.getMonth()}-${datetime.getFullYear()} ${datetime.getHours()}:${datetime.getMinutes()}:${datetime.getSeconds()}`;
+	let timeAndDateOnly = `${datetime.getDate()}-${datetime.getMonth()+1}-${datetime.getFullYear()} ${datetime.getHours()}:${datetime.getMinutes()}:${datetime.getSeconds()}`;
 	return timeAndDateOnly
 }
 
@@ -55,5 +56,7 @@ function getDate(int) {
 	return dateMsg
 }
 
+console.log(getDateFromString("a hour ago"))
+
 // exporting module
-module.exports = getDateFromString;
+// module.exports = getDateFromString;
