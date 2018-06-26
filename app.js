@@ -2,6 +2,7 @@
 let x = 0, number;
 const date = new Date();
 
+// Check which month it is
 const whichMonth = () => {
 	const year = date.getFullYear();
 	const month = date.getMonth();
