@@ -56,5 +56,5 @@ function getDate(int) {
 	return dateMsg
 }
 
-exporting module
+// exporting module
 module.exports = getDateFromString;
