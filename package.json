@@ -1,6 +1,6 @@
 {
     "name": "texttodate",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Convert text format into readable date format",
     "main": "app.js",
     "repository": {
