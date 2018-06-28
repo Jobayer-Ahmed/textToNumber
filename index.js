@@ -169,6 +169,4 @@ const convertTextToDate = (month, minute, extra) => {
 	}
 }
 
-console.log(getInput('a hour ago')) //26-6-2018 2:34:26
-console.log(getInput('a day ago')) //25/6/2018 3:34:54
-console.log(getInput('a month ago')) //27/5/2018 3:36:5
+module.exports = getInput;
