@@ -10,12 +10,47 @@ let currentDate = new Date();
  * 
  */
 const whichMonth = () => {
-	const year = currentDate.getFullYear(), month = currentDate.getMonth()+1, month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11];
+	/**
+	 * get current year from currentDate
+	 * @type {number}
+	 */
+	const year = currentDate.getFullYear();
+	/**
+	 * Get current month from currentDate
+	 * @type {number}
+	 */
+	const month = currentDate.getMonth()+1;
+	/**
+	 * array of those month position who contain 31 day
+	 * @type {Array}
+	 */
+	const month31 = [1,3,5,7,8,10,12];
+	/**
+	 * array of those month position who contain 30 day
+	 * @type {Array}
+	 */
+	const month30 = [4,6,9,11];
+	/**
+	 * check if current month contain 31 day
+	 * @param  {number} month31.includes(month) 1 or -1
+	 * @return {number}                         if 1 return 31
+	 */
 	if (month31.includes(month)) {
 		return 31;
-	} else if (month30.includes(month)) {
+	} 
+	/**
+	 * check if current month contain 30 day
+	 * @param  {number} month30.includes(month) 1 or -1
+	 * @return {number}                         if 1 return 30
+	 */
+	else if (month30.includes(month)) {
 		return 30;
 	} else {
+		/**
+		 * check if current year is leap year or not
+		 * @param  {bool} (year %             100 true or false
+		 * @return {number}       if true return 29
+		 */
 		if ((year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0)) {
 			return 29;
 		} else {
@@ -30,6 +65,10 @@ const whichMonth = () => {
  * @return {number}     if contain a or an then return 1 otherwise return number version of first part of user input
  */
 function aoran (int) {
+	/**
+	 * check first section contain a or an
+	 * @return {number}
+	 */
 	if (int === 'a' || int === 'an')
 		return 1;
 	return parseInt(int);
@@ -41,12 +80,53 @@ function aoran (int) {
  * @return {function} call convertTextToDate function
  */
 const getInput = (str) => {
+	/**
+	 * contain all month related thing
+	 * @type {Object}
+	 */
 	const textToMonth = { 'year': 365, 'month': whichMonth(), 'week': 7, 'day': 1 };
+	/**
+	 * contain all minutes related thing
+	 * @type {Object}
+	 */
 	const textToMinute = { 'second': 1, 'minute': 60, 'hour': 3600 };
-	let split = str.split(' '), quantity = aoran(split[0]), mainSTR = split[1].split(''), extra = split[3],totalQuantityMonth = 0, totalQuantityMinute = 0, result, length = mainSTR.length - 1;
-
+	let split = str.split(' ');
+	/**
+	 * first part of user input
+	 * @type {string}
+	 */
+	let quantity = aoran(split[0]);
+	/**
+	 * second part of user input
+	 * @type {Array}
+	 */
+	let mainSTR = split[1].split('');
+	/**
+	 * extra part of user input
+	 * @type {string}
+	 */
+	let extra = split[3],totalQuantityMonth = 0;
+	/**
+	 * total quantity of month
+	 * @type {number}
+	 */
+	let totalQuantityMinute = 0;
+	/**
+	 * main result
+	 * @type {function}
+	 */
+	let result;
+	/**
+	 * total length of part second of user input
+	 * @type {string}
+	 */
+	let length = mainSTR.length - 1;
+	/**
+	 * check if user input contain plural part
+	 * @param  {string} mainSTR[length] 
+	 * @return {string} 
+	 */
 	if (mainSTR[length] === 's') { mainSTR.pop(); mainSTR = mainSTR.join('');} else { mainSTR = mainSTR.join(''); }
-
 	if (Object.keys(textToMonth).includes(mainSTR) > 0) {
 		totalQuantityMonth = quantity * textToMonth[mainSTR];
 	} else if (Object.keys(textToMinute).includes(mainSTR) > 0) {
